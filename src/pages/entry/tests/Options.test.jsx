@@ -11,7 +11,7 @@ test("display image for each scoop option from server", async () => {
   expect(altText).toEqual(["Chocolate scoop", "Vanilla scoop"]);
 });
 
-test("display image from option from server", async () => {
+test("display image for each toppings option from server", async () => {
   render(<Options optionType="toppings" />);
   //find Images
   const toppingImages = await screen.findAllByRole("img", {
@@ -19,6 +19,11 @@ test("display image from option from server", async () => {
   });
   expect(toppingImages).toHaveLength(3);
 
+  //check the actual alt text for the images
   const altText = toppingImages.map((element) => element.alt);
-  expect(altText).toEqual(["Cherries", "M&Ms", "Hot fudge"]);
+  expect(altText).toEqual([
+    "Cherries topping",
+    "M&Ms topping",
+    "Hot fudge topping",
+  ]);
 });
