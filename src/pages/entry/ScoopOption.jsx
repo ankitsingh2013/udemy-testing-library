@@ -5,7 +5,8 @@ import { Form, Row } from "react-bootstrap";
 export default function ScoopOption({ name, imagePath }) {
   const { updateItemCount } = useOrderDetails();
 
-  const handleChange = (e) => updateItemCount(name, e.target.value, "scoops");
+  const handleChange = (e) =>
+    updateItemCount(name, parseInt(e.target.value), "scoops");
   //console.log(name, imagePath);
   return (
     <Col xs={12} sm={6} md={4} lg={3} style={{ textAlign: "center" }}>

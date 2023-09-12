@@ -8,7 +8,7 @@ test("update scoops subtotal when scoops change", async () => {
   render(<Options optionType="scoops" />, { wrapper: OrderDetailsProvider });
 
   //make sure total starts out at $0.00
-  const scoopsSubtotal = screen.getByText("Scoops total: $", {
+  const scoopsSubtotal = screen.getByText("Scoops total : $", {
     exact: false,
   });
   expect(scoopsSubtotal).toHaveTextContent("0.00");
@@ -26,8 +26,8 @@ test("update scoops subtotal when scoops change", async () => {
     name: "Chocolate",
   });
 
-  await user.clear(chocolatesInput);
-  await user.type(chocolatesInput, 2);
+  await user.clear(chocolateInput);
+  await user.type(chocolateInput, 2);
 
   expect(scoopsSubtotal).toHaveTextContent("6.00");
 });
