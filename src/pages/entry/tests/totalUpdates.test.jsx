@@ -1,11 +1,10 @@
-import { render, screen } from "@testing-library/react";
+import { render, screen } from "../../../test-utils/testing-utils-library";
 import userEvent from "@testing-library/user-event";
 import Options from "../Options";
-import { OrderDetailsProvider } from "../../../contexts/orderDetails";
 
 test("update scoops subtotal when scoops change", async () => {
   const user = userEvent.setup();
-  render(<Options optionType="scoops" />, { wrapper: OrderDetailsProvider });
+  render(<Options optionType="scoops" />);
 
   //make sure total starts out at $0.00
   const scoopsSubtotal = screen.getByText("Scoops total : $", {
@@ -27,7 +26,7 @@ test("update scoops subtotal when scoops change", async () => {
   });
 
   await user.clear(chocolateInput);
-  await user.type(chocolateInput, 2);
+  await user.type(chocolateInput, "2");
 
   expect(scoopsSubtotal).toHaveTextContent("6.00");
 });
