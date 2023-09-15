@@ -14,12 +14,18 @@ export default function Options({ optionType }) {
   const { totals } = useOrderDetails();
   //option type is scoops or toppings
   useEffect(() => {
+    const controller = new AbortController();
     axios
-      .get(`http://localhost:3030/${optionType}`)
+      .get(`http://localhost:3030/${optionType}`, { signal: controller.signal })
       .then((response) => setItems(response.data))
       .catch((error) => {
-        setError(true);
+        if (error.name !== "Cancelled Error") setError(true);
       });
+
+    //abort axios call on component unmount
+    return () => {
+      controller.abort();
+    };
   }, [optionType]);
 
   if (error) {
