@@ -19,7 +19,7 @@ export default function Options({ optionType }) {
       .get(`http://localhost:3030/${optionType}`, { signal: controller.signal })
       .then((response) => setItems(response.data))
       .catch((error) => {
-        if (error.name !== "Cancelled Error") setError(true);
+        if (error.name !== "Canceled Error") setError(true);
       });
 
     //abort axios call on component unmount
