@@ -1,4 +1,4 @@
-import { useOrderDetails } from "../../contexts/orderDetails";
+import { useOrderDetails } from "../../contexts/OrderDetails";
 import { formatCurrency } from "../../utilities";
 import Options from "./Options";
 
@@ -9,6 +9,9 @@ export default function OrderEntry() {
       <Options optionType="scoops" />
       <Options optionType="toppings" />
       <h2>Grand total: {formatCurrency(totals.scoops + totals.toppings)}</h2>
+      <button type="button" class="btn btn-primary">
+        Order Sundae!
+      </button>
     </div>
   );
 }

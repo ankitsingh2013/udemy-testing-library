@@ -1,5 +1,5 @@
 import Col from "react-bootstrap/Col";
-import { useOrderDetails } from "../../contexts/orderDetails";
+import { useOrderDetails } from "../../contexts/OrderDetails";
 import { Form, Row } from "react-bootstrap";
 
 export default function ScoopOption({ name, imagePath }) {

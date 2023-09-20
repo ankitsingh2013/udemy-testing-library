@@ -6,7 +6,7 @@ import ToppingOption from "./ToppingOption";
 import AlertBanner from "../common/Alertbanner";
 import { pricePerItem } from "../../constant";
 import { formatCurrency } from "../../utilities";
-import { useOrderDetails } from "../../contexts/orderDetails";
+import { useOrderDetails } from "../../contexts/OrderDetails";
 
 export default function Options({ optionType }) {
   const [items, setItems] = useState([]);
@@ -14,12 +14,16 @@ export default function Options({ optionType }) {
   const { totals } = useOrderDetails();
   //option type is scoops or toppings
   useEffect(() => {
+    // create an abortController to attach to the network request
     const controller = new AbortController();
     axios
-      .get(`http://localhost:3030/${optionType}`, { signal: controller.signal })
+      .get(`http://localhost:3030/${optionType}`, {
+        signal: controller.signal,
+      })
       .then((response) => setItems(response.data))
       .catch((error) => {
-        if (error.name !== "Canceled Error") setError(true);
+        console.log(error);
+        if (error.name !== "CanceledError") setError(true);
       });
 
     //abort axios call on component unmount
