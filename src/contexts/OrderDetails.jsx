@@ -1,4 +1,4 @@
-import { createContext, useState, useEffect, useContext } from "react";
+import { createContext, useState, useContext } from "react";
 import { pricePerItem } from "../constant";
 
 const OrderDetails = createContext();
@@ -22,6 +22,7 @@ export function OrderDetailsProvider(props) {
     scoops: {}, //example - {chocolate: 1, vanilla: 2}
     toppings: {}, //example - {Gummi Bears: 1}
   });
+  //const [orderPhase, setOrderPhase] = useState("inProgress");
 
   function updateItemCount(itemName, newItemCount, optionType) {
     //make a copy of existing state
@@ -31,6 +32,9 @@ export function OrderDetailsProvider(props) {
     //update the state with the updated copy
     setOptionCounts(newOptionCounts);
   }
+  // function updateOrderPhase(phase) {
+
+  // }
 
   function resetOrder() {
     setOptionCounts({ scoops: {}, topping: {} });
