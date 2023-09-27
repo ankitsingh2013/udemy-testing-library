@@ -16,7 +16,7 @@ export default function OrderEntry({ setOrderPhase }) {
       <h2>Grand total: {formatCurrency(totals.scoops + totals.toppings)}</h2>
       <Button
         type="button"
-        class="btn btn-primary"
+        className="btn btn-primary"
         onClick={() => setOrderPhase("review")}
         disabled={orderDisabled}
       >

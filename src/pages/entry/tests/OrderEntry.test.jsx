@@ -31,7 +31,7 @@ test("disable order button if there are no scoops ordered", async () => {
   render(<OrderEntry setOrderPhase={jest.fn()} />);
 
   //order button should be diabled at first, even before options load
-  const orderButton = screen.getByRole("button", { name: /confirm order/i });
+  const orderButton = screen.getByRole("button", { name: /Order Sundae!/i });
   expect(orderButton).toBeDisabled();
 
   //expect button to be enabled after adding scoop

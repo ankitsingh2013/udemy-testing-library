@@ -9,7 +9,7 @@ export default function OrderConfirmation({ setOrderPhase }) {
 
   useEffect(() => {
     axios
-      .post(`https://localhost:3030/order`)
+      .post(`http://localhost:3030/order`)
       .then((response) => {
         setOrderNumber(response.data.orderNumber);
       })

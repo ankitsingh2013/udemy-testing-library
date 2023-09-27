@@ -37,15 +37,17 @@ export function OrderDetailsProvider(props) {
   // }
 
   function resetOrder() {
-    setOptionCounts({ scoops: {}, topping: {} });
+    console.log('reset order')
+    setOptionCounts({ scoops: {}, toppings: {} });
   }
+
   function calculateTotal(optionType) {
     //get an array of count for the option type (for example: [1,2])
-    const countsArray = Object.values(optionCounts[optionType]);
+    const countsArray = Object.values(optionCounts[optionType]) || [];
 
     //total the values in the array of counts for the number of items
-    const totalCount = countsArray.reduce((total, value) => total + value, 0);
-
+    const totalCount = countsArray.reduce((total, value) => total + parseInt(value), 0);
+    
     //multiply the total number of items by the price for this item type
     return totalCount * pricePerItem[optionType];
   }

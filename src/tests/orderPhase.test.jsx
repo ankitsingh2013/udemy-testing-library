@@ -3,7 +3,7 @@ import userEvent from "@testing-library/user-event";
 
 import App from "../App";
 
-test("Order phases for Happy path", async () => {
+test.only("Order phases for Happy path", async () => {
   const user = userEvent.setup();
   //render app
   //destructure unmount from return value to use at the end of test
@@ -27,10 +27,11 @@ test("Order phases for Happy path", async () => {
   });
   await user.click(cherriesCheckbox);
 
-  const mochiCheckbox = await screen.findByRole("checkbox", {
-    name: "Mochi",
-  });
-  await user.click(mochiCheckbox);
+  // const fudgeCheckbox = await screen.findByRole("checkbox", {
+  //   name: "Hot fudge",
+  // });
+  
+  // await user.click(fudgeCheckbox);
 
   // find and click order button
   const orderSummaryButton = screen.getByRole("button", {
@@ -38,14 +39,14 @@ test("Order phases for Happy path", async () => {
   });
   await user.click(orderSummaryButton);
   // check summary info based on the order
-  const summaryHeading = screen.getByRole("heading", { name: "Order Summary" });
+  const summaryHeading = screen.getByRole("heading", { name: "Order Summary:" });
   expect(summaryHeading).toBeInTheDocument();
 
   const scoopsHeading = screen.getByRole("heading", { name: "Scoops: $6.00" });
   expect(scoopsHeading).toBeInTheDocument();
 
   const toppingsHeading = screen.getByRole("heading", {
-    name: "Topping: $1.50",
+    name: "Toppings: $1.50",
   });
   expect(toppingsHeading).toBeInTheDocument();
 
@@ -71,6 +72,7 @@ test("Order phases for Happy path", async () => {
   await user.click(confirmOrderButton);
 
   // Expect Loading to show
+  screen.debug()
   const loading = screen.getByText(/loading/i);
   expect(loading).toBeInTheDocument();
 
