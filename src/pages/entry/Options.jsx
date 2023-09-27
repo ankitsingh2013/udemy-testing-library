@@ -1,6 +1,6 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
-import ScoopOption from "./ScoopOption";
+import ScoopOptions from "./ScoopOption";
 import Row from "react-bootstrap/Row";
 import ToppingOption from "./ToppingOption";
 import AlertBanner from "../common/Alertbanner";
@@ -36,7 +36,7 @@ export default function Options({ optionType }) {
     return <AlertBanner />;
   }
 
-  const ItemComponent = optionType === "scoops" ? ScoopOption : ToppingOption;
+  const ItemComponent = optionType === "scoops" ? ScoopOptions : ToppingOption;
   const title = optionType[0].toUpperCase() + optionType.slice(1).toLowerCase();
 
   const optionItems = items.map((item) => (
